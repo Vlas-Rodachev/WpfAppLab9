@@ -1,0 +1,71 @@
+﻿<Window x:Class="MoneyApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MoneyApp"
+        mc:Ignorable="d"
+        Title="Калькулятор денег" Height="450" Width="600">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Money A Input -->
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Сумма A:" Margin="0,0,10,0" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Name="txtRublesA" Margin="0,0,5,5" Width="100" HorizontalAlignment="Left" Text="0"/>
+        <TextBlock Grid.Row="0" Grid.Column="2" Text="руб." Margin="5,0,0,0" VerticalAlignment="Center"/>
+
+        <TextBox Grid.Row="1" Grid.Column="1" Name="txtKopeksA" Margin="0,0,5,10" Width="100" HorizontalAlignment="Left" Text="0"/>
+        <TextBlock Grid.Row="1" Grid.Column="2" Text="коп." Margin="5,0,0,0" VerticalAlignment="Center"/>
+
+        <!-- Money B Input -->
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Сумма B:" Margin="0,10,10,0" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Name="txtRublesB" Margin="0,10,5,5" Width="100" HorizontalAlignment="Left" Text="0"/>
+        <TextBlock Grid.Row="2" Grid.Column="2" Text="руб." Margin="5,10,0,0" VerticalAlignment="Center"/>
+
+        <TextBox Grid.Row="3" Grid.Column="1" Name="txtKopeksB" Margin="0,0,5,10" Width="100" HorizontalAlignment="Left" Text="0"/>
+        <TextBlock Grid.Row="3" Grid.Column="2" Text="коп." Margin="5,0,0,0" VerticalAlignment="Center"/>
+
+        <!-- Operations -->
+        <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+            <Button Content="A - B" Width="60" Margin="5" Click="BtnSubtract_Click"/>
+            <Button Content="A++" Width="60" Margin="5" Click="BtnIncrementA_Click"/>
+            <Button Content="A--" Width="60" Margin="5" Click="BtnDecrementA_Click"/>
+            <Button Content="B++" Width="60" Margin="5" Click="BtnIncrementB_Click"/>
+            <Button Content="B--" Width="60" Margin="5" Click="BtnDecrementB_Click"/>
+        </StackPanel>
+
+        <!-- Subtract Rubles -->
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="Рубли для вычитания:" Margin="0,0,10,0" VerticalAlignment="Center" RenderTransformOrigin="0.482,-0.21" Height="18"/>
+        <TextBox Grid.Row="5" Name="txtSubtractRubles" Margin="130,7,0,8" Width="100" HorizontalAlignment="Left" Text="0" Grid.ColumnSpan="2" RenderTransformOrigin="0.496,0.52"/>
+        <StackPanel Grid.Row="5" Grid.Column="2" Orientation="Horizontal" Margin="5,10,0,0">
+            <Button Content="A - rub" Width="65" Click="BtnSubtractRublesFromA_Click"/>
+            <Button Content="rub - A" Width="60" Click="BtnSubtractAFromRubles_Click"/>
+        </StackPanel>
+
+        <!-- Results -->
+        <GroupBox Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Header="Результат" Margin="0,10">
+            <ScrollViewer>
+                <TextBlock Name="txtResults" TextWrapping="Wrap" Margin="5"/>
+            </ScrollViewer>
+        </GroupBox>
+
+        <!-- Status Bar -->
+        <StatusBar Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3">
+            <TextBlock Name="txtStatus" Text="Информация"/>
+        </StatusBar>
+    </Grid>
+</Window>
